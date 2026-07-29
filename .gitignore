@@ -5,3 +5,7 @@ dist
 *.log
 .DS_Store
 next-env.d.ts
+.idea
+.claude
+.agents
+/lib/generated/prisma
