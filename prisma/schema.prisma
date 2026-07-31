@@ -11,3 +11,43 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Usuarios{
+  id_usuario  String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  cod_usuario BigInt  @unique @default(autoincrement())
+  nombre     String  @default("")
+  Cursos CursosDeUsuarios[]
+}
+model CursosDeUsuarios{
+  id_cursoDeUsuario String @db.Uuid @id @default(dbgenerated("gen_random_uuid()"))
+  fk_usuario String @db.Uuid
+  usuario Usuarios @relation(fields: [fk_usuario],references: [id_usuario])
+  fk_curso String @db.Uuid
+  curso Cursos @relation(fields: [fk_curso],references: [id_cursos])
+}
+model Cursos{
+  id_cursos String @db.Uuid @id @default(dbgenerated("gen_random_uuid()"))
+  cod_curso BigInt @unique @default(autoincrement())
+  url String @default("")
+  precio Decimal @default(0)
+  titulo String @default("")
+  descripcion String @default("")
+  Categorias CategoriasPorCursos[]
+  Usuarios CursosDeUsuarios[]
+}
+
+model CategoriasPorCursos{
+  id_CategoriaPorCurso String @db.Uuid @id @default(dbgenerated("gen_random_uuid()"))
+  fk_categoria String @db.Uuid
+  categoria Categorias @relation(fields: [fk_categoria],references: [id_categoria])
+  fk_curso String @db.Uuid
+  curso Cursos @relation(fields: [fk_curso],references: [id_cursos])
+}
+model Categorias{
+  id_categoria String @id @db.Uuid @default(dbgenerated("gen_random_uuid()"))
+  cod_categoria BigInt @unique @default(autoincrement())
+  nombre String @default("")
+  Cursos CategoriasPorCursos[]
+}
+
+
