@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Escáner · Funciones">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6c9fe8"/>
+      <stop offset="1" stop-color="#2e6fdb"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <circle cx="90" cy="80" r="140" fill="#ffffff26"/>
+  <circle cx="720" cy="400" r="170" fill="#ffffff1f"/>
+  <rect x="220" y="130" width="360" height="240" rx="30" fill="none" stroke="#ffffffbf" stroke-width="20"/><path d="M270 300 L340 300 L370 210 L410 330 L440 250 L530 250" fill="none" stroke="#ffffffbf" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="415" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="700" fill="#ffffffe6">Escáner · Funciones</text>
+</svg>

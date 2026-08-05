@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Red LIN">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6c9fe8"/>
+      <stop offset="1" stop-color="#2e6fdb"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <circle cx="90" cy="80" r="140" fill="#ffffff26"/>
+  <circle cx="720" cy="400" r="170" fill="#ffffff1f"/>
+  <path d="M120 300 H680" fill="none" stroke="#ffffffbf" stroke-width="10" stroke-linecap="round"/><path d="M175 300 V190" stroke="#ffffffbf" stroke-width="8" stroke-linecap="round"/><circle cx="175" cy="175" r="26" fill="#ffffffbf"/><path d="M325 300 V250" stroke="#ffffffbf" stroke-width="8" stroke-linecap="round"/><circle cx="325" cy="235" r="26" fill="#ffffffbf"/><path d="M475 300 V190" stroke="#ffffffbf" stroke-width="8" stroke-linecap="round"/><circle cx="475" cy="175" r="26" fill="#ffffffbf"/><path d="M625 300 V250" stroke="#ffffffbf" stroke-width="8" stroke-linecap="round"/><circle cx="625" cy="235" r="26" fill="#ffffffbf"/>
+  <text x="400" y="415" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="700" fill="#ffffffe6">Red LIN</text>
+</svg>

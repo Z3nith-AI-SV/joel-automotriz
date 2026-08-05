@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Transmisiones">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eaf2ff"/>
+      <stop offset="1" stop-color="#6c9fe8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <circle cx="90" cy="80" r="140" fill="#ffffff26"/>
+  <circle cx="720" cy="400" r="170" fill="#ffffff1f"/>
+  <circle cx="400" cy="250" r="110" fill="none" stroke="#10233f4d" stroke-width="26"/><circle cx="400" cy="250" r="42" fill="#10233f4d"/><rect x="514" y="234" width="32" height="32" rx="8" fill="#10233f4d" transform="rotate(0 530 250)"/><rect x="475.9238815542512" y="325.9238815542512" width="32" height="32" rx="8" fill="#10233f4d" transform="rotate(45 491.9238815542512 341.9238815542512)"/><rect x="384" y="364" width="32" height="32" rx="8" fill="#10233f4d" transform="rotate(90 400 380)"/><rect x="292.0761184457488" y="325.9238815542512" width="32" height="32" rx="8" fill="#10233f4d" transform="rotate(135 308.0761184457488 341.9238815542512)"/><rect x="254" y="234.00000000000003" width="32" height="32" rx="8" fill="#10233f4d" transform="rotate(180 270 250.00000000000003)"/><rect x="292.0761184457488" y="142.07611844574882" width="32" height="32" rx="8" fill="#10233f4d" transform="rotate(225 308.0761184457488 158.07611844574882)"/><rect x="384" y="104" width="32" height="32" rx="8" fill="#10233f4d" transform="rotate(270 400 120)"/><rect x="475.9238815542511" y="142.07611844574882" width="32" height="32" rx="8" fill="#10233f4d" transform="rotate(315 491.9238815542511 158.07611844574882)"/>
+  <text x="400" y="415" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="700" fill="#10233fb3">Transmisiones</text>
+</svg>

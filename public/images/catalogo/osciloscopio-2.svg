@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Pinza amperimétrica">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ddeafc"/>
+      <stop offset="1" stop-color="#bfd7f8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <circle cx="90" cy="80" r="140" fill="#ffffff26"/>
+  <circle cx="720" cy="400" r="170" fill="#ffffff1f"/>
+  <path d="M40 260 H160 L200 150 L240 360 L280 260 H420 L460 180 L500 330 L540 260 H760" fill="none" stroke="#10233f4d" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="415" text-anchor="middle" font-family="sans-serif" font-size="26" font-weight="700" fill="#10233fb3">Pinza amperimétrica</text>
+</svg>
