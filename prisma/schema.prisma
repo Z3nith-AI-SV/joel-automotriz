@@ -23,10 +23,11 @@ model CursosDeUsuarios{
   fk_usuario String @db.Uuid
   usuario Usuarios @relation(fields: [fk_usuario],references: [id_usuario])
   fk_curso String @db.Uuid
-  curso Cursos @relation(fields: [fk_curso],references: [id_cursos])
+  curso Cursos @relation(fields: [fk_curso],references: [id_curso])
 }
 model Cursos{
-  id_cursos String @db.Uuid @id @default(dbgenerated("gen_random_uuid()"))
+  @@map("cursos")
+  id_curso String @db.Uuid @id @default(dbgenerated("gen_random_uuid()"))
   cod_curso BigInt @unique @default(autoincrement())
   url String @default("")
   precio Decimal @default(0)
@@ -41,7 +42,7 @@ model CategoriasPorCursos{
   fk_categoria String @db.Uuid
   categoria Categorias @relation(fields: [fk_categoria],references: [id_categoria])
   fk_curso String @db.Uuid
-  curso Cursos @relation(fields: [fk_curso],references: [id_cursos])
+  curso Cursos @relation(fields: [fk_curso],references: [id_curso])
 }
 model Categorias{
   id_categoria String @id @db.Uuid @default(dbgenerated("gen_random_uuid()"))

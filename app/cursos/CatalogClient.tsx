@@ -3,13 +3,14 @@
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { CATEGORIES, COURSES } from "@/lib/courses";
+
 import CourseCard from "@/components/CourseCard";
 import GlassBlobs from "@/components/GlassBlobs";
+import {Cursos} from "@/lib/generated/prisma/client";
 
-export default function CatalogClient() {
+export default  function CatalogClient({cursos}: {cursos: Cursos[]}) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string>("Todas");
-
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return COURSES.filter((c) => {
@@ -86,9 +87,9 @@ export default function CatalogClient() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-              {filtered.map((course, i) => (
+              {cursos.map((course, i) => (
                 <CourseCard
-                  key={course.slug}
+                  key={course.id_curso}
                   course={course}
                   gradient={(i % 4) + 1}
                 />

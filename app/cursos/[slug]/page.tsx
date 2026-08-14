@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import CourseCard from "@/components/CourseCard";
 import { COURSES, getCourse } from "@/lib/courses";
 import { SITE } from "@/lib/site";
+import {Cursos} from "@/lib/generated/prisma/client";
+import {prisma} from "@/lib/db/prisma";
 
 export function generateStaticParams() {
   return COURSES.map((c) => ({ slug: c.slug }));
@@ -44,19 +46,21 @@ export default async function CoursePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const course = getCourse(slug);
+  const course = await prisma.cursos.findUnique({
+    where: {id_curso: slug},
+  });
   if (!course) notFound();
 
   const index = COURSES.findIndex((c) => c.slug === slug);
-  const related = COURSES.filter(
-    (c) => c.category === course.category && c.slug !== course.slug
-  ).slice(0, 3);
+  //const related = COURSES.filter(
+//    (c) => c.category === course.category && c.slug !== course.slug
+//  ).slice(0, 3);
 
   const courseJsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",
-    name: course.title,
-    description: course.description,
+    name: course.titulo,
+    description: course.descripcion,
     provider: {
       "@type": "Organization",
       name: "Joel Automotriz en Acción",
@@ -64,9 +68,9 @@ export default async function CoursePage({
     },
     offers: {
       "@type": "Offer",
-      price: course.price,
+      price: course.precio,
       priceCurrency: "USD",
-      category: course.category,
+      category: 0,
     },
     inLanguage: "es",
   };
@@ -95,24 +99,25 @@ export default async function CoursePage({
             <div className="lg:col-span-2 space-y-8">
               <div>
                 <span className="glass-chip inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-ink">
-                  <span>{course.emoji}</span> {course.category}
+                  <span>emoji</span> categoria
                 </span>
                 <h1 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-ink text-balance leading-[1.1]">
-                  {course.title}
+                  {course.titulo}
                 </h1>
                 <p className="mt-5 text-lg text-ink/70 leading-relaxed">
-                  {course.description}
+                  {course.descripcion}
                 </p>
               </div>
 
               {/* Video de introducción */}
               <div className="glass-strong rounded-[2rem] p-3 sm:p-4">
-                {course.introVideoUrl ? (
+                {/*video de introduccion*/}
+                {/*course.introVideoUrl ? (
                   <div className="aspect-video rounded-2xl overflow-hidden bg-ink/5">
                     <iframe
                       className="w-full h-full"
-                      src={course.introVideoUrl}
-                      title={`Introducción — ${course.title}`}
+                      src=""//url de video
+                      title={`Introducción — ${course.titulo}`}
                       loading="lazy"
                       allowFullScreen
                     />
@@ -137,44 +142,10 @@ export default async function CoursePage({
                       </p>
                     </div>
                   </div>
-                )}
-              </div>
-
-              {/* Temario */}
-              <div className="glass rounded-3xl p-6 sm:p-8">
-                <h2 className="font-display text-2xl font-bold text-ink">Temario</h2>
-                <p className="mt-2 text-sm text-ink/60">
-                  [TEMARIO PENDIENTE — se completará con el detalle real del curso]
-                </p>
-                <ul className="mt-6 space-y-3">
-                  {[1, 2, 3, 4, 5, 6].map((n) => (
-                    <li key={n} className="flex items-start gap-3">
-                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary/10 text-primary text-xs font-bold">
-                        {n}
-                      </span>
-                      <span className="text-ink/70">Módulo {n} — [contenido pendiente]</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Cómo aprenderás */}
-              <div className="glass rounded-3xl p-6 sm:p-8">
-                <h2 className="font-display text-2xl font-bold text-ink">Cómo aprenderás</h2>
-                <ul className="mt-5 space-y-3">
-                  {LEARN_POINTS.map((p) => (
-                    <li key={p} className="flex items-start gap-3">
-                      <CircleCheck
-                        size={18}
-                        className="text-primary shrink-0 mt-0.5"
-                        aria-hidden="true"
-                      />
-                      <span className="text-ink/80">{p}</span>
-                    </li>
-                  ))}
-                </ul>
+                )*/}
               </div>
             </div>
+
 
             {/* Panel de compra */}
             <aside className="lg:col-span-1">
@@ -185,13 +156,13 @@ export default async function CoursePage({
                   </div>
                   <div className="mt-1 flex items-baseline gap-2">
                     <span className="font-display text-5xl font-bold text-primary">
-                      ${course.price}
+                      ${course.precio.toString()}
                     </span>
                     <span className="text-ink/60 text-sm">USD</span>
                   </div>
                 </div>
                 <a
-                  href={course.paymentUrl ?? "#"}
+                  href= "#"//url de compra
                   className="btn-primary btn-primary-hover w-full inline-flex items-center justify-center rounded-full px-6 py-3.5 text-base font-semibold"
                 >
                   Comprar este curso
@@ -225,22 +196,6 @@ export default async function CoursePage({
           </div>
         </section>
 
-        {/* Cursos relacionados */}
-        {related.length > 0 && (
-          <section className="pb-24 pastel-gradient pt-16">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-ink">
-                Cursos relacionados
-              </h2>
-              <p className="mt-2 text-ink/70">Otros cursos de {course.category}.</p>
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {related.map((c, i) => (
-                  <CourseCard key={c.slug} course={c} gradient={(i % 4) + 1} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
       </main>
       <Footer />
     </div>
