@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CircleCheck, CirclePlay, Mail } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -27,6 +28,7 @@ export async function generateMetadata({
       title: course.title,
       description: course.description,
       url: `/cursos/${course.slug}`,
+      images: course.image ? [{ url: course.image, width: 1200, height: 675 }] : undefined,
     },
   };
 }
@@ -57,6 +59,7 @@ export default async function CoursePage({
     "@type": "Course",
     name: course.title,
     description: course.description,
+    ...(course.image ? { image: `${SITE.url}${course.image}` } : {}),
     provider: {
       "@type": "Organization",
       name: "Joel Automotriz en Acción",
@@ -107,23 +110,45 @@ export default async function CoursePage({
 
               {/* Video de introducción */}
               <div className="glass-strong rounded-[2rem] p-3 sm:p-4">
-                {course.introVideoUrl ? (
-                  <div className="aspect-video rounded-2xl overflow-hidden bg-ink/5">
-                    <iframe
-                      className="w-full h-full"
-                      src={course.introVideoUrl}
-                      title={`Introducción — ${course.title}`}
-                      loading="lazy"
-                      allowFullScreen
-                    />
-                  </div>
+                {course.introVideo ? (
+                  <>
+                    <div className="aspect-video rounded-2xl overflow-hidden bg-ink">
+                      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+                      <video
+                        className="w-full h-full"
+                        src={course.introVideo}
+                        poster={course.image}
+                        controls
+                        controlsList="nodownload"
+                        preload="metadata"
+                        playsInline
+                        aria-label={`Video de introducción del curso ${course.title}`}
+                      />
+                    </div>
+                    <p className="px-2 pt-3 pb-1 text-sm text-ink/60">
+                      Vista previa del curso — mira de qué se trata antes de comprarlo.
+                    </p>
+                  </>
                 ) : (
                   <div
-                    className={`relative aspect-video rounded-2xl overflow-hidden card-gradient-${
-                      (index % 4) + 1
-                    } grid place-items-center`}
+                    className={`relative aspect-video rounded-2xl overflow-hidden grid place-items-center ${
+                      course.image ? "" : `card-gradient-${(index % 4) + 1}`
+                    }`}
                   >
-                    <div className="text-center px-6">
+                    {course.image && (
+                      <>
+                        <Image
+                          src={course.image}
+                          alt={`Miniatura del curso ${course.title}`}
+                          fill
+                          sizes="(min-width: 1024px) 66vw, 100vw"
+                          priority
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-ink/55 backdrop-blur-[2px]" />
+                      </>
+                    )}
+                    <div className="relative text-center px-6 [text-shadow:0_1px_8px_rgba(16,35,63,0.6)]">
                       <CirclePlay
                         size={64}
                         className="mx-auto text-white/90 drop-shadow"

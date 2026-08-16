@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/site";
 import {
@@ -21,13 +22,14 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid md:grid-cols-3 gap-10">
           <div>
-            <Link href="/" className="flex items-center gap-2 font-display font-bold text-ink">
-              <span className="grid h-9 w-9 place-items-center rounded-2xl btn-primary text-white text-lg">
-                J
-              </span>
-              <span className="text-lg">
-                Joel Automotriz <span className="text-primary">en Acción</span>
-              </span>
+            <Link href="/" aria-label="Joel Automotive in Action — inicio" className="inline-block">
+              <Image
+                src="/brand/logo.png"
+                alt="Joel Automotive in Action"
+                width={1000}
+                height={369}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="mt-4 text-sm text-ink/70 leading-relaxed max-w-sm">
               Cursos de diagnóstico automotriz por Joel Navarro, técnico con 11

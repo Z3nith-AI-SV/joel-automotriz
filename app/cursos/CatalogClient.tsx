@@ -49,10 +49,39 @@ export default function CatalogClient() {
               className="flex-1 min-w-0 bg-transparent py-2 text-ink placeholder:text-ink/40 focus:outline-none"
             />
           </div>
+
+          {/* Video guía: cómo funcionan y cómo se navegan los cursos */}
+          <div className="mt-10 glass-strong rounded-[2rem] p-4 sm:p-5 grid sm:grid-cols-[minmax(0,22rem)_1fr] gap-5 items-center max-w-4xl">
+            <div className="aspect-video rounded-2xl overflow-hidden bg-ink">
+              {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+              <video
+                className="w-full h-full"
+                src="/intros/como-navegar-los-cursos.mp4"
+                poster="/intros/como-navegar-los-cursos.jpg"
+                controls
+                controlsList="nodownload"
+                preload="metadata"
+                playsInline
+                aria-label="Video: cómo navegar los cursos"
+              />
+            </div>
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                Empieza por aquí
+              </span>
+              <h2 className="mt-1 font-display text-xl sm:text-2xl font-bold text-ink">
+                Cómo navegar los cursos
+              </h2>
+              <p className="mt-2 text-ink/70 leading-relaxed">
+                Joel te explica en video cómo está organizado el contenido, cómo
+                recibes el acceso y cómo sacarle el máximo a cada módulo.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="relative border-t border-white/50 sticky top-16 z-30 glass-nav">
+      <section className="relative border-t border-white/50 sticky top-20 z-30 glass-nav">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex gap-2 overflow-x-auto scrollbar-none -mx-1 px-1">
             {["Todas", ...CATEGORIES].map((cat) => (

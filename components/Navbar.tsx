@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/site";
@@ -25,14 +26,15 @@ export default function Navbar() {
         style={scrolled ? undefined : { background: "transparent" }}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2 font-display font-bold text-ink">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-2xl btn-primary text-white text-lg">
-              J
-            </span>
-            <span className="hidden sm:inline text-lg tracking-tight">
-              Joel Automotriz <span className="text-primary">en Acción</span>
-            </span>
-            <span className="sm:hidden text-base">Joel Automotriz</span>
+          <Link href="/" aria-label="Joel Automotive in Action — inicio" className="shrink-0">
+            <Image
+              src="/brand/logo.png"
+              alt="Joel Automotive in Action"
+              width={1000}
+              height={369}
+              priority
+              className="h-11 w-auto sm:h-14"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -114,8 +116,8 @@ export default function Navbar() {
         </aside>
       </div>
 
-      {/* Espaciador bajo el header fijo */}
-      <div className="h-16" aria-hidden="true" />
+      {/* Espaciador bajo el header fijo (logo h-14 + py-3 = 80px) */}
+      <div className="h-20" aria-hidden="true" />
     </>
   );
 }

@@ -5,7 +5,10 @@ export interface Course {
   price: number; // TODO: 3 cursos cambian a $165/$175 — confirmar cuáles con Joel
   description: string;
   emoji: string;
-  introVideoUrl?: string;
+  /** Miniatura 16:9 en /public/cursos/<slug>.jpg */
+  image?: string;
+  /** Video de intro (~1 min) en /public/intros/<slug>.mp4 */
+  introVideo?: string;
   paymentUrl?: string;
 }
 
@@ -34,6 +37,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Comprende a fondo cómo se diseñan y comportan los circuitos pull-up y pull-down en los sistemas modernos.",
     emoji: "⚡",
+    image: "/cursos/circuitos-electricos-pull-up-pull-down.jpg",
+    introVideo: "/intros/circuitos-electricos-pull-up-pull-down.mp4",
   },
   {
     slug: "esquemas-diagramas-sae-din",
@@ -42,6 +47,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Aprende a leer diagramas eléctricos bajo los dos estándares que dominan la industria automotriz.",
     emoji: "⚡",
+    image: "/cursos/esquemas-diagramas-sae-din.jpg",
+    introVideo: "/intros/esquemas-diagramas-sae-din.mp4",
   },
   {
     slug: "dtc-estructura-composicion",
@@ -50,6 +57,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Descifra los códigos de falla desde su estructura para acelerar y precisar tus diagnósticos.",
     emoji: "🔍",
+    image: "/cursos/dtc-estructura-composicion.jpg",
+    introVideo: "/intros/dtc-estructura-composicion.mp4",
   },
   {
     slug: "escaner-modulo-1-pids-graficas",
@@ -58,6 +67,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Domina la lectura de PIDs y el análisis gráfico como base de un diagnóstico serio con escáner.",
     emoji: "📟",
+    image: "/cursos/escaner-modulo-1-pids-graficas.jpg",
+    introVideo: "/intros/escaner-modulo-1-pids-graficas.mp4",
   },
   {
     slug: "escaner-modulo-2-funciones-especiales",
@@ -66,6 +77,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Funciones bidireccionales, adaptaciones y programaciones básicas con escáner profesional.",
     emoji: "📟",
+    image: "/cursos/escaner-modulo-2-funciones-especiales.jpg",
+    introVideo: "/intros/escaner-modulo-2-funciones-especiales.mp4",
   },
   {
     slug: "fuel-trims-mezcla-pobre-rica",
@@ -74,6 +87,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Interpreta los fuel trims para identificar con precisión mezclas ricas, pobres y sus causas raíz.",
     emoji: "⛽",
+    image: "/cursos/fuel-trims-mezcla-pobre-rica.jpg",
+    introVideo: "/intros/fuel-trims-mezcla-pobre-rica.mp4",
   },
   {
     slug: "sistema-carga-control-inteligente",
@@ -82,6 +97,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Evolución del sistema de carga: de los alternadores clásicos al control inteligente por módulo.",
     emoji: "⚡",
+    image: "/cursos/sistema-carga-control-inteligente.jpg",
+    introVideo: "/intros/sistema-carga-control-inteligente.mp4",
   },
   {
     slug: "sistema-evaporativo-evap",
@@ -90,6 +107,7 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Diagnóstico completo del sistema EVAP en todas las marcas y estrategias del mercado.",
     emoji: "⛽",
+    image: "/cursos/sistema-evaporativo-evap.jpg",
   },
   {
     slug: "inyeccion-directa-gdi",
@@ -98,6 +116,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Funcionamiento, sensores y estrategias de diagnóstico en los sistemas de inyección directa GDI.",
     emoji: "⛽",
+    image: "/cursos/inyeccion-directa-gdi.jpg",
+    introVideo: "/intros/inyeccion-directa-gdi.mp4",
   },
   {
     slug: "red-can-topologia-diagnostico",
@@ -106,6 +126,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Estructura, topología y técnicas de diagnóstico de la red CAN en vehículos actuales.",
     emoji: "🔗",
+    image: "/cursos/red-can-topologia-diagnostico.jpg",
+    introVideo: "/intros/red-can-topologia-diagnostico.mp4",
   },
   {
     slug: "red-lin-diagnostico",
@@ -114,6 +136,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Cómo funcionan y cómo se diagnostican las redes LIN paso a paso.",
     emoji: "🔗",
+    image: "/cursos/red-lin-diagnostico.jpg",
+    introVideo: "/intros/red-lin-diagnostico.mp4",
   },
   {
     slug: "comunicacion-modulo-linea-control",
@@ -122,6 +146,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Diagnóstico de la comunicación entre módulos por líneas de control específicas.",
     emoji: "🔗",
+    image: "/cursos/comunicacion-modulo-linea-control.jpg",
+    introVideo: "/intros/comunicacion-modulo-linea-control.mp4",
   },
   {
     slug: "osciloscopio-1-basico-escalas",
@@ -130,6 +156,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Primer contacto con el osciloscopio: configuración, escalas y lectura básica de señales.",
     emoji: "📈",
+    image: "/cursos/osciloscopio-1-basico-escalas.jpg",
+    introVideo: "/intros/osciloscopio-1-basico-escalas.mp4",
   },
   {
     slug: "osciloscopio-2-pinza-amperimetrica",
@@ -138,6 +166,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Uso profesional de la pinza amperimétrica y análisis de compresión relativa.",
     emoji: "📈",
+    image: "/cursos/osciloscopio-2-pinza-amperimetrica.jpg",
+    introVideo: "/intros/osciloscopio-2-pinza-amperimetrica.mp4",
   },
   {
     slug: "osciloscopio-3-sensores-delta",
@@ -146,6 +176,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Interpretación de sensores delta, absolutos y de pulso con osciloscopio.",
     emoji: "📈",
+    image: "/cursos/osciloscopio-3-sensores-delta.jpg",
+    introVideo: "/intros/osciloscopio-3-sensores-delta.mp4",
   },
   {
     slug: "osciloscopio-4-transductor-presion",
@@ -154,6 +186,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Diagnóstico mecánico interno del motor con transductor de presión in-cylinder.",
     emoji: "📈",
+    image: "/cursos/osciloscopio-4-transductor-presion.jpg",
+    introVideo: "/intros/osciloscopio-4-transductor-presion.mp4",
   },
   {
     slug: "osciloscopio-5-vvt-vct-vvl",
@@ -162,6 +196,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Análisis con osciloscopio de sistemas de válvulas variables VVT, VCT y VVL.",
     emoji: "📈",
+    image: "/cursos/osciloscopio-5-vvt-vct-vvl.jpg",
+    introVideo: "/intros/osciloscopio-5-vvt-vct-vvl.mp4",
   },
   {
     slug: "sistema-encendido-generaciones",
@@ -170,6 +206,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Evolución completa del sistema de encendido desde lo fundamental hasta las bobinas inteligentes.",
     emoji: "🔥",
+    image: "/cursos/sistema-encendido-generaciones.jpg",
+    introVideo: "/intros/sistema-encendido-generaciones.mp4",
   },
   {
     slug: "osciloscopio-6-ondas-encendido",
@@ -178,6 +216,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Interpretación avanzada de formas de onda del sistema de encendido con osciloscopio.",
     emoji: "📈",
+    image: "/cursos/osciloscopio-6-ondas-encendido.jpg",
+    introVideo: "/intros/osciloscopio-6-ondas-encendido.mp4",
   },
   {
     slug: "autel-maxiscope",
@@ -186,6 +226,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Domina el Autel MaxiScope: configuración, zoom y análisis profesional de señales.",
     emoji: "🎛️",
+    image: "/cursos/autel-maxiscope.jpg",
+    introVideo: "/intros/autel-maxiscope.mp4",
   },
   {
     slug: "usb-autoscope-1-paneles-ondas",
@@ -194,6 +236,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Introducción al USB Autoscope: paneles, controles y lectura de formas de onda.",
     emoji: "🎛️",
+    image: "/cursos/usb-autoscope-1-paneles-ondas.jpg",
+    introVideo: "/intros/usb-autoscope-1-paneles-ondas.mp4",
   },
   {
     slug: "usb-autoscope-2-scripts",
@@ -202,6 +246,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Uso avanzado de scripts del USB Autoscope aplicados a casos reales de diagnóstico.",
     emoji: "🎛️",
+    image: "/cursos/usb-autoscope-2-scripts.jpg",
+    introVideo: "/intros/usb-autoscope-2-scripts.mp4",
   },
   {
     slug: "aire-acondicionado-mecanica",
@@ -210,6 +256,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Diagnóstico mecánico del A/C: presiones, temperaturas y comportamiento del refrigerante.",
     emoji: "❄️",
+    image: "/cursos/aire-acondicionado-mecanica.jpg",
+    introVideo: "/intros/aire-acondicionado-mecanica.mp4",
   },
   {
     slug: "aire-acondicionado-electronica",
@@ -218,6 +266,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Sensores, actuadores y computadoras del sistema de climatización moderno.",
     emoji: "❄️",
+    image: "/cursos/aire-acondicionado-electronica.jpg",
+    introVideo: "/intros/aire-acondicionado-electronica.mp4",
   },
   {
     slug: "hibridos-1-introduccion",
@@ -226,6 +276,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Base sólida sobre vehículos híbridos y su mantenimiento preventivo seguro.",
     emoji: "🔋",
+    image: "/cursos/hibridos-1-introduccion.jpg",
+    introVideo: "/intros/hibridos-1-introduccion.mp4",
   },
   {
     slug: "hibridos-2-alto-voltaje",
@@ -234,6 +286,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Procedimientos de diagnóstico en el sistema de alto voltaje de vehículos híbridos.",
     emoji: "🔋",
+    image: "/cursos/hibridos-2-alto-voltaje.jpg",
+    introVideo: "/intros/hibridos-2-alto-voltaje.mp4",
   },
   {
     slug: "hibridos-3-inversor-bateria",
@@ -242,6 +296,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Funcionamiento y diagnóstico del conversor, inversor y batería de alto voltaje.",
     emoji: "🔋",
+    image: "/cursos/hibridos-3-inversor-bateria.jpg",
+    introVideo: "/intros/hibridos-3-inversor-bateria.mp4",
   },
   {
     slug: "transmisiones-1-mecanica-hidraulica",
@@ -250,6 +306,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Componentes mecánicos e hidráulicos de las transmisiones automáticas modernas.",
     emoji: "⚙️",
+    image: "/cursos/transmisiones-1-mecanica-hidraulica.jpg",
+    introVideo: "/intros/transmisiones-1-mecanica-hidraulica.mp4",
   },
   {
     slug: "transmisiones-2-electronica",
@@ -258,6 +316,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Control electrónico y diagnóstico avanzado de las transmisiones automáticas.",
     emoji: "⚙️",
+    image: "/cursos/transmisiones-2-electronica.jpg",
+    introVideo: "/intros/transmisiones-2-electronica.mp4",
   },
   {
     slug: "autos-no-prenden-1",
@@ -266,6 +326,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Estrategia de diagnóstico paso a paso para vehículos que no arrancan (Parte 1).",
     emoji: "🔍",
+    // TODO: falta la miniatura #30 — pedírsela a Joel
+    introVideo: "/intros/autos-no-prenden-1.mp4",
   },
   {
     slug: "autos-no-prenden-2",
@@ -274,6 +336,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Casos avanzados de vehículos que no arrancan y su resolución (Parte 2).",
     emoji: "🔍",
+    image: "/cursos/autos-no-prenden-2.jpg",
+    introVideo: "/intros/autos-no-prenden-2.mp4",
   },
   {
     slug: "abs-control-estabilidad",
@@ -282,6 +346,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Funcionamiento y diagnóstico del sistema ABS y control electrónico de estabilidad.",
     emoji: "🛑",
+    image: "/cursos/abs-control-estabilidad.jpg",
+    introVideo: "/intros/abs-control-estabilidad.mp4",
   },
   {
     slug: "diesel-heui",
@@ -290,6 +356,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Sistema HEUI en motores diésel Ford, International y Caterpillar: operación y diagnóstico.",
     emoji: "🛢️",
+    image: "/cursos/diesel-heui.jpg",
+    introVideo: "/intros/diesel-heui.mp4",
   },
   {
     slug: "j2534-modulo-1",
@@ -298,6 +366,8 @@ export const COURSES: Course[] = [
     price: 75,
     description: "Introducción a la programación de módulos con estándar J2534.",
     emoji: "💻",
+    image: "/cursos/j2534-modulo-1.jpg",
+    introVideo: "/intros/j2534-modulo-1.mp4",
   },
 ];
 

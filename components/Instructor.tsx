@@ -1,4 +1,6 @@
 import { Award, CircleCheck } from "lucide-react";
+import { YOUTUBE } from "@/lib/youtube";
+import { YoutubeIcon } from "./SocialIcons";
 
 const CREDENTIALS = [
   "Egresado de escuela automotriz en El Salvador (1994).",
@@ -64,6 +66,22 @@ export default function Instructor() {
             Las certificaciones ASE son otorgadas por una de las entidades más
             prestigiosas de la industria automotriz.
           </p>
+          <a
+            href={YOUTUBE.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 glass-chip inline-flex items-center gap-3 rounded-full py-2.5 pl-4 pr-5 text-ink hover:brightness-105 transition"
+          >
+            <YoutubeIcon size={22} />
+            <span className="text-sm leading-tight text-left">
+              <span className="block font-semibold">
+                {YOUTUBE.subscribers} suscriptores en YouTube
+              </span>
+              <span className="block text-ink/60 text-xs">
+                {YOUTUBE.handle} · {YOUTUBE.videoCount} videos
+              </span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
