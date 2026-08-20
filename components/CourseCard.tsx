@@ -10,6 +10,7 @@ export default function CourseCard({
   course: Cursos;
   gradient: number; // 1–4
 }) {
+  console.log(course.precio)
   return (
     <Link
       href={`/cursos/${course.id_curso}`}
@@ -32,7 +33,7 @@ export default function CourseCard({
         </h3>
         <div className="mt-auto flex items-center justify-between pt-2">
           <span className="font-display text-2xl font-bold text-primary">
-            ${course.precio.toString()}
+            ${course.precio}
           </span>
           <span className="inline-flex items-center gap-1 text-sm font-semibold text-ink/70 group-hover:text-primary transition">
             Ver curso <ArrowUpRight size={16} aria-hidden="true" />
