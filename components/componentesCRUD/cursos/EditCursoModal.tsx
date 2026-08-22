@@ -3,23 +3,34 @@
 import {useEffect, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
-import {cursoSchemaUpdate, CursoSchema} from "@/lib/schemas/curso.schema";
-import {getCursoPorId,updateCurso} from "@/lib/actions/cursos";
-import {Cursos} from "@/lib/generated/prisma/client";
-import {Decimal} from "@prisma/client/runtime/client";
+import {
+    cursoSchemaUpdate,
+    CursoSchema,
+    CursoUpdateInput,
+    urlImagenCurso,
+} from "@/lib/schemas/curso.schema";
+import {getCursoPorId, updateCurso} from "@/lib/actions/cursos";
+import CampoImagen from "@/components/componentesCRUD/cursos/CampoImagen";
+import {CursosSerializados} from "@/lib/types/cursosSerializados.types";
 
-export default function EditCursoModal({id,onClose}:{id:string; onClose:()=>void}) {
+
+export default function EditCursoModal({id, onClose}: { id: string; onClose: () => void }) {
 const [cargando,setCargando] = useState(true);
 const [serverError, setServerError] = useState<string | null>(null);
+//imagen que ya tiene el curso, para mostrarla mientras no se elija otra
+const [imagenActual, setImagenActual] = useState<string | null>(null);
 
 const {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: {errors, isSubmitting}
-} = useForm<CursoSchema>({
+} = useForm<CursoUpdateInput, unknown, CursoSchema>({
     resolver: zodResolver(cursoSchemaUpdate)
 });
+
+const imagenSeleccionada = watch('imagen');
 
 useEffect(() => {
     let activo = true;
@@ -33,9 +44,11 @@ useEffect(() => {
                 descripcion: curso!.descripcion ?? '',
                 precio: Number(curso!.precio),
                 url: curso!.url ?? '',
+                imagen: undefined,
             })
+            setImagenActual(urlImagenCurso(curso!.imagen_miniatura));
         })
-        .catch((err) => setServerError(err))
+        .catch((err) => setServerError(err instanceof Error ? err.message : String(err)))
         .finally(() => activo && setCargando(false));
 
     return() => {
@@ -47,19 +60,10 @@ useEffect(() => {
 const onSubmit = async (data: CursoSchema) => {
 
     setServerError(null);
-    var curso_parsed:Cursos = {
-        titulo : data.titulo,
-        descripcion: data.descripcion,
-        precio: Decimal(data.precio),
-        url: data.url,
-        id_curso:"",
-        cod_curso: BigInt(0)
-    }
 
-
-    const res = await updateCurso(curso_parsed,id);
+    const res = await updateCurso(data, id);
     if(!res.success){
-        setServerError('Revisar campos');
+        setServerError(res.mensaje);
         return;
     }
     onClose();
@@ -103,6 +107,7 @@ return(
                             rows={3}
                             className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200"
                         />
+                        {errors.descripcion && <p className="mt-1 text-sm text-red-600">{errors.descripcion.message}</p>}
                     </div>
 
                     <div>
@@ -124,6 +129,14 @@ return(
                         />
                         {errors.url && <p className="mt-1 text-sm text-red-600">{errors.url.message}</p>}
                     </div>
+
+                    <CampoImagen
+                        registro={register('imagen')}
+                        seleccion={imagenSeleccionada}
+                        imagenActual={imagenActual}
+                        error={errors.imagen?.message}
+                        ayuda="Opcional: si no eliges una imagen se conserva la actual."
+                    />
 
                     {serverError && <p className="text-sm text-red-600">{serverError}</p>}
 

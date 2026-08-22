@@ -33,6 +33,7 @@ model Cursos{
   precio Decimal @default(0)
   titulo String @default("")
   descripcion String @default("")
+  imagen_miniatura String @default("")
   Categorias CategoriasPorCursos[]
   Usuarios CursosDeUsuarios[]
 }

@@ -3,10 +3,9 @@
 import {useState} from 'react'
 import EditCursoModal from './EditCursoModal'
 import {Cursos} from "@/lib/generated/prisma/client";
-import Paginacion from "@/components/componentesCRUD/Paginacion";
+import {CursosSerializados} from "@/lib/types/cursosSerializados.types";
 
-
-export default function TablaClientComponent({cursos}: { cursos: Cursos[]})
+export default function TablaClientComponent({cursos}: { cursos: CursosSerializados[]})
 {
     //useState para manear la seleccion de curso
     const[idCurso,setIdCurso] = useState<string|null>(null);
@@ -24,7 +23,7 @@ export default function TablaClientComponent({cursos}: { cursos: Cursos[]})
                 </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
-                {cursos.map((u:Cursos) => (
+                {cursos.map((u:CursosSerializados) => (
                     <tr key={u.id_curso} className="hover:bg-slate-50"
                         onClick={() => setIdCurso(u.id_curso)}>
                         <td className="px-4 py-3 text-slate-500">
@@ -41,7 +40,7 @@ export default function TablaClientComponent({cursos}: { cursos: Cursos[]})
                         </td>
                         <td className="px-4 py-3 text-slate-500">
                             <span className="absolute inset-y-0 left-0 w-0.5 bg-slate-900 opacity-0 transition-opacity duration-150 group-hover:opacity-100" />
-                            {u.precio.toString()}
+                            ${u.precio}
                         </td>
 
                     </tr>
